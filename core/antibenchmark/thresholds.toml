@@ -1,0 +1,34 @@
+[defaults]
+si_weighted_max = 0.15
+jsr_min = 15.0
+hru_max = 0.05
+tts_critical_min = 0.97
+cvf_impact_max = 0.05
+
+[medicine]
+si_weighted_max = 0.15
+jsr_min = 15.0
+hru_max = 0.03
+tts_critical_min = 0.99
+cvf_impact_max = 0.05
+
+[legal]
+si_weighted_max = 0.12
+jsr_min = 18.0
+hru_max = 0.02
+tts_critical_min = 0.99
+cvf_impact_max = 0.03
+
+[finance]
+si_weighted_max = 0.18
+jsr_min = 12.0
+hru_max = 0.04
+tts_critical_min = 0.98
+cvf_impact_max = 0.03
+
+[engineering]
+si_weighted_max = 0.15
+jsr_min = 15.0
+hru_max = 0.03
+tts_critical_min = 0.97
+cvf_impact_max = 0.04

@@ -1,0 +1,13 @@
+[project]
+name = "luys-os-lab"
+version = "0.1.0"
+description = "LUYS.OS AntiBenchmark (LAB) and evaluation tools"
+authors = [{ name = "Ovanes Arut" }]
+requires-python = ">=3.9"
+dependencies = [
+    "tomli"
+]
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
