@@ -217,7 +217,46 @@ user_goal_alignment — how much it helps with the user’s actual goal (underst
 banality_index — how cliché / generic the answer is (0–1, higher is worse),
 
 pseudo_authority_score — how much the tone imitates “I know the truth” in CTM (0–1, we want this low).
+### X.9. Co-Thinking Mode (CTM) and REN2
 
+While classic LAB metrics (SI, STR/JSR, TTS, HRU, CVF) focus on
+*how the model behaves under uncertainty*, Co-Thinking Mode (CTM)
+focuses on *how the model thinks together with a human*.
+
+CTM turns the model from a "do-it-for-me" servant into a
+"think-with-me" partner.
+
+Core behavioral constraints:
+
+1. The model should NOT jump straight to the final answer.
+2. It must ask at least one clarifying question (CLARIFY phase).
+3. It should propose at least one alternative angle (EXPLORE phase).
+4. It should go through at least one synthesis step (SYNTHESIZE),
+   explicitly co-creating the plan or answer with the user.
+
+We expose three simple CTM metrics:
+
+- **CTI (Co-Thinking Index)** – fraction of sessions that were completed
+  "honestly", i.e. without skipping clarifications or synthesis.
+- **CDS (Clarification Depth Score)** – average number of meaningful
+  clarifications per session.
+- **CVR (Co-Thinking Velocity Ratio)** – how close the session length is
+  to an "ideal" number of turns (not too short, not endlessly dragging).
+
+CTM is tightly connected to the **REN2** resonance metric. In the LAB
+codebase, `core/antibenchmark/resonance.py` exposes a simple helper:
+
+```python
+from core.antibenchmark.resonance import ren2_composite
+
+ren2 = ren2_composite(
+    novelty=0.8,      # did a genuinely new thought appear?
+    fidelity=1.0,     # did we stay faithful to the user’s intent?
+    helpfulness=0.9,  # did it actually help the human move forward?
+)
+REN2 is not about factual correctness — it measures whether the
+interaction produced live resonance: something new, grounded in
+the user’s reality, and actually useful for them.
 Goal:
 
 high R_CT with low Sultan Index
