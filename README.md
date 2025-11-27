@@ -423,3 +423,35 @@ the SULTAN model fails LAB because it hallucinates confidently under uncertainty
 
 LAB is designed to make this distinction explicit and measurable.
 
+## Co-Thinking Mode (CTM)
+
+Besides classic AntiBenchmark metrics (Sultan Index, HRU, TTS, CVF),  
+`luys-os-lab` also includes a **Co-Thinking Mode (CTM)** helper.
+
+CTM is a tiny engine that turns a model from a “do-it-for-me” servant  
+into a “think-with-me” partner.
+
+Core ideas:
+
+- The model should not jump straight to the final answer
+- It must ask at least one **clarifying question**
+- It must propose at least one **alternative angle**
+- It must go through a short **synthesis step** together with the user
+
+We expose three simple CTM metrics:
+
+- **CTI (Co-Thinking Index)** – how many sessions were completed without “cheating”
+- **CDS (Clarification Depth Score)** – average number of meaningful clarifications per session
+- **CVR (Co-Thinking Velocity Ratio)** – how close the session length is to an “ideal” number of turns
+
+### Run the CTM demo
+
+```bash
+python examples/run_ctm_demo.py
+=== CTM DEMO ===
+Turns          : 5
+Clarifications : 1
+Synth steps    : 1
+CTI            : 1.0
+CDS            : 0.6
+CVR            : 1.0
