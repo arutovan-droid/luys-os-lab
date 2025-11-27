@@ -6,6 +6,7 @@ and feed the log into simple_ctm_evaluate to get CTM metrics.
 """
 
 from core.antibenchmark.ctm import simple_ctm_evaluate
+from core.antibenchmark.resonance import ren2_composite
 
 
 def main() -> None:
@@ -60,8 +61,15 @@ def main() -> None:
     print(f"CDS            : {metrics.cds}")
     print(f"CVR            : {metrics.cvr}")
 
+    # Dummy REN2 example for now – later can be wired to real CTM logs
+    ren2_score = ren2_composite(
+        novelty=0.8,
+        fidelity=1.0,
+        helpfulness=0.9,
+    )
+    print(f"REN2 (demo)    : {ren2_score:.3f}")
+
 
 if __name__ == "__main__":
     main()
-
 
