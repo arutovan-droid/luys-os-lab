@@ -1,3 +1,8 @@
+
+# LUYS.OS LAB — AntiBenchmark for High-Stakes AI
+
+[![LUYS LAB CI](https://github.com/arutovan-droid/luys-os-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/arutovan-droid/luys-os-lab/actions/workflows/ci.yml)
+
 # LUYS.OS LAB — AntiBenchmark for High-Stakes AI
 
 **LUYS.OS LAB** is an experimental *AntiBenchmark* module for evaluating model behavior under uncertainty.
