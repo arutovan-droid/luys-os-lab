@@ -275,5 +275,87 @@ It is an attempt to define a trust standard:
 
 Not “how smart the model is”,
 but how trustworthy it is when it does not know.
+## Resonance Helper (REN2)
+
+Besides risk-focused metrics (Sultan Index, HRU, TTS, CVF),  
+`luys-os-lab` also exposes a small **resonance helper** module:
+
+```python
+from core.antibenchmark.resonance import ren2_composite
+
+# Example: compute a REN2-like score from three dimensions
+novelty    = 0.8   # how much genuinely new meaning appears
+fidelity   = 0.9   # how consistent it is with the base reality / constraints
+helpfulness = 1.0  # how much it actually helps the human
+
+score = ren2_composite(
+    novelty=novelty,
+    fidelity=fidelity,
+    helpfulness=helpfulness,
+    novelty_weight=0.6,
+    fidelity_weight=0.1,
+    helpfulness_weight=0.3,
+)
+
+print(f"REN2 score: {score:.3f}")
 
 Contributions are welcome — cases, metrics, code, critique.
+
+The goal of REN2 is not to measure “knowledge”,
+but how much genuinely new, helpful meaning emerges in the interaction
+without breaking the underlying reality constraints.
+
+## Licensing & IP
+
+- **Code** in this repository is licensed under the main project license
+  (see `LICENSE`, currently MIT).
+- The **public sample dataset** `lab_core_50.json` is provided under
+  a non-commercial license (CC BY-NC 4.0).  
+  It is intended for research, experimentation, and demos.
+- Larger high-stakes datasets (LAB-CORE-500, LAB-EXT-5K) are **not** part of
+  this public repo and are available only under a separate agreement
+  (e.g. NDA, commercial license).
+- The project names and terms:
+
+  - *LUYS.OS LAB*  
+  - *LUYS AntiBenchmark*  
+  - *Sultan Index*  
+  - *Co-Thinking Mode (CTM)*  
+  - *REN / REN2 Resonance Metrics*
+
+  are part of the project identity and must not be used to claim
+  official “certification” without written permission.
+
+You are welcome to experiment with the code and ideas, and to say that you
+were **“inspired by LUYS.OS LAB”**.  
+But official **“LAB-certified”** labels are reserved for evaluations done
+by the authors or authorized partners.
+
+
+## Resonance & Co-Thinking (CTM)
+
+Besides classic AntiBenchmark metrics (Sultan Index, HRU, TTS, CVF),
+`luys-os-lab` also explores **Resonance**:
+
+- How often does the model help a human **co-create** a new, honest thought,
+  instead of just producing text?
+- Can the model avoid lying and still be creative?
+
+The `core/antibenchmark/resonance.py` module provides a simple composite:
+
+- **REN2** = 0.6 · Novelty + 0.1 · Fidelity + 0.3 · Helpfulness
+
+and the CTM demo (`examples/run_ctm_demo.py`) shows how a short,
+“let’s think together” session can be evaluated with:
+
+- **CTI** – Co-Thinking Index  
+- **CDS** – Clarification Depth Score  
+- **CVR** – Co-Thinking Velocity Ratio  
+- **REN2** – Resonance score for that session
+
+The idea is simple:
+
+> LAB tells you *when the model should stay silent*,
+> CTM + REN2 tell you *how good the conversation becomes
+> when the model is allowed to think with the human*.
+
